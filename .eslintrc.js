@@ -26,6 +26,7 @@ module.exports = {
     quotes: ['warn', 'single'],
     semi: ['warn', 'always'],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'import/prefer-default-export': 'off',
   },
   overrides: [
     {
