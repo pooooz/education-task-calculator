@@ -1,3 +1,3 @@
-import { Heading } from './components';
+import { Heading } from './styled';
 
-export default Heading;
+export { Heading };

@@ -5,7 +5,7 @@ import { AppRouter } from './AppRouter';
 import { ThemePreferenceContext } from '../utils/context';
 import { colors } from '../theme';
 
-function App() {
+export const App = () => {
   const [currentTheme, setCurrentTheme] = useState('light');
   const themeContestProviderValue = useMemo(
     () => ({ currentTheme, setCurrentTheme }),
@@ -19,6 +19,4 @@ function App() {
       </ThemeProvider>
     </ThemePreferenceContext.Provider>
   );
-}
-
-export default App;
+};

@@ -6,6 +6,21 @@ module.exports = {
     jest: true,
   },
   extends: ['airbnb', 'airbnb/hooks', 'prettier'],
+  ignorePatterns: ['node_modules/'],
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: ['src'],
+      },
+      alias: {
+        map: [
+          ['components', './components'],
+          ['containers', './containers'],
+        ],
+        extensions: ['.js', '.jsx', '.json'],
+      },
+    },
+  },
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -27,6 +42,12 @@ module.exports = {
     semi: ['warn', 'always'],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'import/prefer-default-export': 'off',
+    'react/function-component-definition': [
+      0,
+      {
+        namedComponents: 'function-declaration',
+      },
+    ],
   },
   overrides: [
     {

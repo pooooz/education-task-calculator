@@ -1,3 +1,3 @@
-import { BaseNavbar } from './components';
+import { Navbar } from './styled';
 
-export const Navbar = BaseNavbar;
+export { Navbar };
