@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { StyledNavLink } from './styled';
 
-export const NavItem = ({ to, children }) => (
+const NavItem = ({ to, children }) => (
   <li>
     <StyledNavLink
       to={to}
@@ -12,3 +13,9 @@ export const NavItem = ({ to, children }) => (
     </StyledNavLink>
   </li>
 );
+
+NavItem.propTypes = {
+  children: PropTypes.string.isRequired,
+};
+
+export { NavItem };

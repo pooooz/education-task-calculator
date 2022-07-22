@@ -9,7 +9,7 @@ import { BaseHeader } from './styled';
 export const Header = () => (
   <>
     <BaseHeader>
-      <Heading>Calculation task</Heading>
+      <Heading>Calculator App</Heading>
       <Navbar>
         <NavItem to="/home">Home</NavItem>
         <NavItem to="/settings">Settings</NavItem>
