@@ -16,6 +16,7 @@ module.exports = {
         map: [
           ['components', './components'],
           ['containers', './containers'],
+          ['pages', './pages'],
         ],
         extensions: ['.js', '.jsx', '.json'],
       },

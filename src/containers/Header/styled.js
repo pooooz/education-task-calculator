@@ -6,5 +6,5 @@ export const BaseHeader = styled.header`
   align-items: center;
   min-height: 120px;
   padding: 0 32px;
-  background: ${({ theme }) => theme.colors.background};
+  background: ${({ theme }) => theme.colors.header};
 `;

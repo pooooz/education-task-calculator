@@ -7,6 +7,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    background: ${({ theme }) => theme.colors.background};
     margin: 0;
     font-family: 'Helvetica Neue', 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
