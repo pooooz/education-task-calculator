@@ -5,6 +5,7 @@ export const light = {
   background: '#FFFFFF',
   border: '#707070',
   button: '#F2F2F2',
+  clearButton: '#F2F2F2',
 };
 
 export const dark = {
@@ -14,6 +15,7 @@ export const dark = {
   background: '#242424',
   border: '#707070',
   button: '#F2F2F2',
+  clearButton: '#f85149',
 };
 
 export const colors = {
