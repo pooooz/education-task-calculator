@@ -10,11 +10,11 @@ export const SelectWrap = styled.div`
   &::after {
     content: url(${dropdownImage});
     pointer-events: none;
-    width: 30px;
-    height: 30px;
+    width: 23px;
+    height: 21px;
     position: absolute;
     top: 33px;
-    right: 0;
+    right: 25px;
   }
 `;
 
