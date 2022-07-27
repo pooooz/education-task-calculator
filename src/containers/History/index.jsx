@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
   StyledAside,
@@ -9,7 +10,7 @@ import {
   HistoryElement,
 } from './styled';
 
-export const History = ({ history }) => (
+const History = ({ history }) => (
   <HistoryWrap>
     <StyledHr />
     <StyledAside>
@@ -28,3 +29,14 @@ export const History = ({ history }) => (
     </StyledAside>
   </HistoryWrap>
 );
+
+History.propTypes = {
+  history: PropTypes.arrayOf(
+    PropTypes.shape({
+      expression: PropTypes.string,
+      value: PropTypes.number,
+    })
+  ).isRequired,
+};
+
+export { History };
