@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Header } from 'containers/Header';
 import { Home } from 'pages/Home';
 import { Settings } from 'pages/Settings';
+import { NotFound } from 'pages/NotFound';
 
 export const AppRouter = ({ calculations }) => (
   <BrowserRouter>
@@ -23,6 +24,7 @@ export const AppRouter = ({ calculations }) => (
           element={<Settings clearHistory={calculations.clearHistory} />}
         />
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   </BrowserRouter>
 );
