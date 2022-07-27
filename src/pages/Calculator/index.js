@@ -14,6 +14,17 @@ const reducer = (expression, action) => {
     }
     case 'CE': {
       if (expression.value.length > 1) {
+        if (
+          expression.value[expression.value.length - 1] === ' ' ||
+          (Number.isNaN(
+            Number(expression.value[expression.value.length - 1])
+          ) &&
+            expression.value[expression.value.length - 1] !== '.')
+        ) {
+          return {
+            value: expression.value.slice(0, expression.value.length - 3),
+          };
+        }
         return {
           value: expression.value.slice(0, expression.value.length - 1),
         };
@@ -28,11 +39,15 @@ const reducer = (expression, action) => {
       };
     }
     default: {
+      const expressionLastChar = expression.value[expression.value.length - 2];
+
       if (Number.isNaN(Number(action.payload)) && action.payload !== '.') {
-        if (
-          expression.value[expression.value.length - 2] === '(' &&
-          action.payload === '-'
-        ) {
+        if (expression.value === '0' && action.payload === '(') {
+          return {
+            value: `${action.payload} `,
+          };
+        }
+        if (expressionLastChar === '(' && action.payload === '-') {
           return {
             value: `${expression.value}${action.payload}`,
           };
@@ -40,14 +55,14 @@ const reducer = (expression, action) => {
         if (
           expression.value.toString().length > 2 &&
           action.payload !== '(' &&
-          expression.value[expression.value.length - 2] !== '.' &&
-          expression.value[expression.value.length - 2] !== '(' &&
-          expression.value[expression.value.length - 2] !== ')' &&
+          expressionLastChar !== '.' &&
+          expressionLastChar !== '(' &&
+          expressionLastChar !== ')' &&
           !(
-            expression.value[expression.value.length - 2] === '-' &&
+            expressionLastChar === '-' &&
             expression.value[expression.value.length - 4] === '('
           ) &&
-          Number.isNaN(Number(expression.value[expression.value.length - 2]))
+          Number.isNaN(Number(expressionLastChar))
         ) {
           return {
             value: `${

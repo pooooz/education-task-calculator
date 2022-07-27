@@ -33,12 +33,18 @@ const operators = Object.freeze({
 });
 
 const isValid = (s) => {
+  if (s.match(/[+\-*/]{2}/) || s.match(/\d\(/) || s.match(/\)\d/)) {
+    throw new Error('Invalid input');
+  }
+  if (s.match(/\(\)/)) {
+    throw new Error('Invalid parenthesis input');
+  }
   const leftBrackets = s.match(/\(/g);
   const rightBrackets = s.match(/\)/g);
   if (leftBrackets || rightBrackets) {
     if (!(leftBrackets === null && rightBrackets !== null)) {
       if (s.match(/\(/g).length !== s.match(/\)/g).length) {
-        throw Error('Invalid parenthesis input');
+        throw new Error('Invalid parenthesis input');
       }
     } else {
       throw new Error('Invalid parenthesis input');
