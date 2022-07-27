@@ -49,6 +49,13 @@ module.exports = {
         namedComponents: 'function-declaration',
       },
     ],
+    'no-plusplus': 0,
+    'max-classes-per-file': 0,
+    'react/no-array-index-key': 0,
+    'consistent-return': 0,
+    'no-restricted-syntax': 0,
+    'array-callback-return': 0,
+    'default-case': 0,
   },
   overrides: [
     {

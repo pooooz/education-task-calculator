@@ -3,11 +3,13 @@ import React from 'react';
 import { ThemeSwitcher } from 'containers/ThemeSwitcher';
 import { SettingHeading, SettingsContainer, ClearButton } from './styled';
 
-const Settings = () => (
+const Settings = ({ clearHistory }) => (
   <SettingsContainer>
     <SettingHeading>Settings</SettingHeading>
     <ThemeSwitcher />
-    <ClearButton type="button">Clear all history</ClearButton>
+    <ClearButton type="button" onClick={clearHistory}>
+      Clear all history
+    </ClearButton>
   </SettingsContainer>
 );
 
