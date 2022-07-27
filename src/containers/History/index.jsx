@@ -16,8 +16,10 @@ export const History = ({ history }) => (
       <HistoryHeading>History</HistoryHeading>
       <HistoryList>
         {history.length ? (
-          history.map((elem) => (
-            <HistoryElement key={elem}>{elem}</HistoryElement>
+          history.map((elem, index) => (
+            <HistoryElement key={elem.expression + index}>
+              {`${elem.expression} = ${elem.result} `}
+            </HistoryElement>
           ))
         ) : (
           <HistoryElement>History is empty</HistoryElement>
