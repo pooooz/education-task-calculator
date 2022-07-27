@@ -1,9 +1,9 @@
 import React, { useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { Display } from 'containers/Display';
-import { Keyboard } from 'containers/Keyboard';
-import { History } from 'containers/History';
+import { Display } from 'containers/Functional/Display';
+import { Keyboard } from 'containers/Functional/Keyboard';
+import { History } from 'containers/Functional/History';
 import { CalculatorContainer, HomeContainer } from './styled';
 
 const reducer = (expression, action) => {

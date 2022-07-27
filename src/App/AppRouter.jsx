@@ -2,9 +2,11 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { Header } from 'containers/Header';
-import { Calculator } from 'pages/Calculator';
-import { Settings } from 'pages/Settings';
+import { Calculator } from 'pages/Functional/Calculator';
+import { Settings } from 'pages/Functional/Settings';
 import { NotFound } from 'pages/NotFound';
+import { ClassCalculator } from 'pages/Class/Calculator';
+import { ClassSettings } from 'pages/Class/Settings';
 
 export const AppRouter = ({ calculations }) => (
   <BrowserRouter>
@@ -20,8 +22,21 @@ export const AppRouter = ({ calculations }) => (
           }
         />
         <Route
+          path="/homecl"
+          element={
+            <ClassCalculator
+              calculator={calculations.calculator}
+              calculate={calculations.dispatchCommand}
+            />
+          }
+        />
+        <Route
           path="/settings"
           element={<Settings clearHistory={calculations.clearHistory} />}
+        />
+        <Route
+          path="/settingscl"
+          element={<ClassSettings clearHistory={calculations.clearHistory} />}
         />
       </Route>
       <Route path="*" element={<NotFound />} />
