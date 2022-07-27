@@ -16,6 +16,7 @@ const NavItem = ({ to, children }) => (
 
 NavItem.propTypes = {
   children: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
 };
 
 export { NavItem };

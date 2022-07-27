@@ -1,4 +1,5 @@
 import React, { useReducer, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import { Display } from 'containers/Display';
 import { Keyboard } from 'containers/Keyboard';
@@ -88,7 +89,7 @@ const reducer = (expression, action) => {
   }
 };
 
-export const Calculator = ({ calculator, calculate }) => {
+const Calculator = ({ calculator, calculate }) => {
   const [expression, dispatch] = useReducer(reducer, {
     value: '0',
   });
@@ -121,3 +122,17 @@ export const Calculator = ({ calculator, calculate }) => {
     </HomeContainer>
   );
 };
+
+Calculator.propTypes = {
+  calculator: PropTypes.shape({
+    current: PropTypes.number,
+    history: PropTypes.arrayOf(
+      PropTypes.shape({
+        expression: PropTypes.string,
+        value: PropTypes.number,
+      })
+    ).isRequired,
+  }).isRequired,
+};
+
+export { Calculator };

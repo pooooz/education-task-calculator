@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { StyledInput, StyledHr } from './styled';
 
-export const Display = ({ expression }) => {
+const Display = ({ expression }) => {
   if (expression) {
     return (
       <>
@@ -11,3 +13,10 @@ export const Display = ({ expression }) => {
     );
   }
 };
+
+Display.propTypes = {
+  expression: PropTypes.shape({ value: PropTypes.string.isRequired })
+    .isRequired,
+};
+
+export { Display };

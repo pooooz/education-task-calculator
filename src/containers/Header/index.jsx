@@ -1,10 +1,8 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { Navbar } from 'components/Navbar';
 
-import { Heading } from 'components/Heading';
 import { NavItem } from 'components/NavItem';
-import { BaseHeader } from './styled';
+import { BaseHeader, Heading, Navbar } from './styled';
 
 export const Header = () => (
   <>

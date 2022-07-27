@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { ThemeSwitcher } from 'containers/ThemeSwitcher';
 import { SettingHeading, SettingsContainer, ClearButton } from './styled';
@@ -12,5 +13,9 @@ const Settings = ({ clearHistory }) => (
     </ClearButton>
   </SettingsContainer>
 );
+
+Settings.propTypes = {
+  clearHistory: PropTypes.func.isRequired,
+};
 
 export { Settings };
