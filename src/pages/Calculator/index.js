@@ -30,11 +30,23 @@ const reducer = (expression, action) => {
     default: {
       if (Number.isNaN(Number(action.payload)) && action.payload !== '.') {
         if (
+          expression.value[expression.value.length - 2] === '(' &&
+          action.payload === '-'
+        ) {
+          return {
+            value: `${expression.value}${action.payload}`,
+          };
+        }
+        if (
           expression.value.toString().length > 2 &&
           action.payload !== '(' &&
           expression.value[expression.value.length - 2] !== '.' &&
           expression.value[expression.value.length - 2] !== '(' &&
           expression.value[expression.value.length - 2] !== ')' &&
+          !(
+            expression.value[expression.value.length - 2] === '-' &&
+            expression.value[expression.value.length - 4] === '('
+          ) &&
           Number.isNaN(Number(expression.value[expression.value.length - 2]))
         ) {
           return {
@@ -61,7 +73,7 @@ const reducer = (expression, action) => {
   }
 };
 
-export const Home = ({ calculator, calculate }) => {
+export const Calculator = ({ calculator, calculate }) => {
   const [expression, dispatch] = useReducer(reducer, {
     value: '0',
   });

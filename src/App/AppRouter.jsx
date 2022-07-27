@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { Header } from 'containers/Header';
-import { Home } from 'pages/Home';
+import { Calculator } from 'pages/Calculator';
 import { Settings } from 'pages/Settings';
 import { NotFound } from 'pages/NotFound';
 
@@ -13,7 +13,7 @@ export const AppRouter = ({ calculations }) => (
         <Route
           path="/home"
           element={
-            <Home
+            <Calculator
               calculator={calculations.calculator}
               calculate={calculations.dispatchCommand}
             />
