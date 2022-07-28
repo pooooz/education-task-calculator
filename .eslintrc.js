@@ -56,6 +56,7 @@ module.exports = {
     'no-restricted-syntax': 0,
     'array-callback-return': 0,
     'default-case': 0,
+    'react/prefer-stateless-function': 0,
   },
   overrides: [
     {

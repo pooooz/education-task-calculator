@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ThemeSwitcher } from 'containers/ThemeSwitcher';
+import { ThemeSwitcher } from 'containers/Functional/ThemeSwitcher';
 import { SettingHeading, SettingsContainer, ClearButton } from './styled';
 
 const Settings = ({ clearHistory }) => (

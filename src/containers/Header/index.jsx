@@ -10,7 +10,9 @@ export const Header = () => (
       <Heading>Calculator App</Heading>
       <Navbar>
         <NavItem to="/home">Home</NavItem>
+        <NavItem to="/homecl">Home Class</NavItem>
         <NavItem to="/settings">Settings</NavItem>
+        <NavItem to="/settingscl">Settings Class</NavItem>
       </Navbar>
     </BaseHeader>
     <main>
