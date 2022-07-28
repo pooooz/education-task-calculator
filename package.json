@@ -2,6 +2,7 @@
   "name": "education-task-calculator",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://pooooz.github.io/education-task-calculator",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
@@ -18,7 +19,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "npx eslint ./src --ext .js,.jsx --fix"
+    "lint": "npx eslint ./src --ext .js,.jsx --fix",
+    "predeploy": "yarn run build",
+    "deploy:web": "yarn run build && gh-pages -d build"
   },
   "browserslist": {
     "production": [
@@ -42,6 +45,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "gh-pages": "^4.0.0",
     "prettier": "^2.7.1"
   }
 }

@@ -11,12 +11,12 @@ import { GlobalStyles } from './styled';
 const reducer = (state, action) => {
   switch (action.type) {
     case 'command': {
-      const newCalc = state.calculator;
+      const newCalc = Object.assign(state.calculator, {});
       newCalc.execute(commands.CalculateCommand(action.payload));
       return { calculator: newCalc };
     }
     case 'clear': {
-      const newCalc = state.calculator;
+      const newCalc = Object.assign(state.calculator, {});
       newCalc.clearHistory();
       return { calculator: newCalc };
     }
