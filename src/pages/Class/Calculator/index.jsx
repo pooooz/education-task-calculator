@@ -14,12 +14,17 @@ class ClassCalculator extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const { calculator } = this.props;
+    this.dispatch({
+      type: 'equal',
+      payload: calculator.getCurrentValue().toString(),
+    });
+  }
+
   componentDidUpdate(prevProps) {
     const { calculate, calculator } = this.props;
-    if (
-      prevProps.calculate !== calculate ||
-      prevProps.calculator !== calculator
-    ) {
+    if (prevProps.calculate !== calculate) {
       this.dispatch({
         type: 'equal',
         payload: calculator.getCurrentValue().toString(),
