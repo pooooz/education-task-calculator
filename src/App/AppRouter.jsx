@@ -9,7 +9,7 @@ import { ClassCalculator } from 'pages/Class/Calculator';
 import { ClassSettings } from 'pages/Class/Settings';
 
 export const AppRouter = ({ calculations }) => (
-  <BrowserRouter>
+  <BrowserRouter basename="/education-task-calculator">
     <Routes>
       <Route path="/" element={<Header />}>
         <Route
