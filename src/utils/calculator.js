@@ -14,26 +14,16 @@ function createCommand(func) {
 class Calculator {
   constructor() {
     this.current = 0;
-    this.history = [];
   }
 
   execute(command) {
-    const result = command.execute(command.value);
-    this.current = result;
-    this.history.unshift({
-      expression: command.value,
-      result: Math.round(result * 1e5) / 1e5,
-    });
+    this.current = command.execute(command.value);
   }
 
   getCurrentValue() {
     return this.current;
   }
-
-  clearHistory() {
-    this.history = [];
-    this.current = 0;
-  }
 }
 
-export { Calculator, createCommand };
+export default Calculator;
+export { createCommand };

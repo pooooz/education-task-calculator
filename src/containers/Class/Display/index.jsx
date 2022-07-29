@@ -6,14 +6,12 @@ import { StyledInput, StyledHr } from './styled';
 class Display extends React.Component {
   render() {
     const { expression } = this.props;
-    if (expression) {
-      return (
-        <>
-          <StyledInput value={expression} readOnly />
-          <StyledHr />
-        </>
-      );
-    }
+    return (
+      <>
+        <StyledInput value={expression} readOnly />
+        <StyledHr />
+      </>
+    );
   }
 }
 

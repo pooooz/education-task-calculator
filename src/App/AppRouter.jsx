@@ -8,35 +8,27 @@ import { NotFound } from 'pages/NotFound';
 import { ClassCalculator } from 'pages/Class/Calculator';
 import { ClassSettings } from 'pages/Class/Settings';
 
-export const AppRouter = ({ calculations }) => (
+export const AppRouter = ({ history, setHistory }) => (
   <BrowserRouter basename="/education-task-calculator">
     <Routes>
       <Route path="/" element={<Header />}>
         <Route
           path="/home"
-          element={
-            <Calculator
-              calculator={calculations.calculator}
-              calculate={calculations.dispatchCommand}
-            />
-          }
+          element={<Calculator history={history} setHistory={setHistory} />}
         />
         <Route
           path="/homecl"
           element={
-            <ClassCalculator
-              calculator={calculations.calculator}
-              calculate={calculations.dispatchCommand}
-            />
+            <ClassCalculator history={history} setHistory={setHistory} />
           }
         />
         <Route
           path="/settings"
-          element={<Settings clearHistory={calculations.clearHistory} />}
+          element={<Settings setHistory={setHistory} />}
         />
         <Route
           path="/settingscl"
-          element={<ClassSettings clearHistory={calculations.clearHistory} />}
+          element={<ClassSettings setHistory={setHistory} />}
         />
       </Route>
       <Route path="*" element={<NotFound />} />

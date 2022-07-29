@@ -6,12 +6,12 @@ import { SettingHeading, SettingsContainer, ClearButton } from './styled';
 
 class ClassSettings extends React.Component {
   render() {
-    const { clearHistory } = this.props;
+    const { setHistory } = this.props;
     return (
       <SettingsContainer>
         <SettingHeading>Settings</SettingHeading>
         <ThemeSwitcher />
-        <ClearButton type="button" onClick={clearHistory}>
+        <ClearButton type="button" onClick={() => setHistory([])}>
           Clear all history
         </ClearButton>
       </SettingsContainer>
@@ -20,7 +20,7 @@ class ClassSettings extends React.Component {
 }
 
 ClassSettings.propTypes = {
-  clearHistory: PropTypes.func.isRequired,
+  setHistory: PropTypes.func.isRequired,
 };
 
 export { ClassSettings };

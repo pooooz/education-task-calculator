@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Calc from 'utils/calculator';
+import { commands } from 'actions';
 import { Display } from 'containers/Class/Display';
 import { Keyboard } from 'containers/Class/Keyboard';
 import { History } from 'containers/Class/History';
@@ -14,36 +16,34 @@ class ClassCalculator extends React.Component {
     };
   }
 
-  componentDidMount() {
-    const { calculator } = this.props;
-    this.dispatch({
-      type: 'equal',
-      payload: calculator.getCurrentValue().toString(),
-    });
-  }
-
-  componentDidUpdate(prevProps) {
-    const { calculate, calculator } = this.props;
-    if (prevProps.calculate !== calculate) {
-      this.dispatch({
-        type: 'equal',
-        payload: calculator.getCurrentValue().toString(),
-      });
-    }
-  }
-
   handlePress = (event) => {
-    const { calculate } = this.props;
-    const { value } = this.state;
-
     if (event.target.tagName !== 'BUTTON') return;
     const buttonValue = event.target.textContent;
 
     if (buttonValue === '=') {
-      calculate(value.trim());
+      const { value } = this.state;
+      const trimmedValue = value.trim();
+      try {
+        const newCalc = new Calc();
+        newCalc.execute(commands.CalculateCommand(trimmedValue));
+        const currentValue = Math.round(newCalc.getCurrentValue() * 1e5) / 1e5;
+        this.dispatch({ type: 'equal', payload: currentValue.toString() });
+        this.changeHistory(trimmedValue, currentValue);
+      } catch (error) {
+        this.dispatch({ type: 'equal', payload: 'Invalid input' });
+      }
+    } else {
+      this.dispatch({ type: buttonValue, payload: buttonValue });
     }
-    this.dispatch({ type: buttonValue, payload: buttonValue });
   };
+
+  changeHistory(exp, res) {
+    const { history, setHistory } = this.props;
+
+    const newHistory = [...history];
+    newHistory.unshift({ expression: exp, result: res });
+    setHistory(newHistory);
+  }
 
   dispatch(action) {
     const { value } = this.state;
@@ -78,8 +78,14 @@ class ClassCalculator extends React.Component {
         break;
       }
       case 'equal': {
+        if (typeof action.payload === 'string') {
+          this.setState({
+            value: action.payload,
+          });
+          break;
+        }
         this.setState({
-          value: (Math.round(action.payload * 1e5) / 1e5).toString(),
+          value: action.payload,
         });
         break;
       }
@@ -135,7 +141,7 @@ class ClassCalculator extends React.Component {
   }
 
   render() {
-    const { calculator } = this.props;
+    const { history } = this.props;
     const { value } = this.state;
     return (
       <HomeContainer>
@@ -143,22 +149,20 @@ class ClassCalculator extends React.Component {
           <Display expression={value} />
           <Keyboard handlePress={this.handlePress} />
         </CalculatorContainer>
-        <History history={calculator.history} />
+        <History history={history} />
       </HomeContainer>
     );
   }
 }
 
 ClassCalculator.propTypes = {
-  calculator: PropTypes.shape({
-    current: PropTypes.number,
-    history: PropTypes.arrayOf(
-      PropTypes.shape({
-        expression: PropTypes.string,
-        value: PropTypes.number,
-      })
-    ).isRequired,
-  }).isRequired,
+  history: PropTypes.arrayOf(
+    PropTypes.shape({
+      expression: PropTypes.string.isRequired,
+      result: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+  setHistory: PropTypes.func.isRequired,
 };
 
 export { ClassCalculator };

@@ -10,7 +10,7 @@ import {
   HistoryElement,
 } from './styled';
 
-const History = ({ history }) => (
+const History = React.memo(({ history }) => (
   <HistoryWrap>
     <StyledHr />
     <StyledAside>
@@ -28,7 +28,7 @@ const History = ({ history }) => (
       </HistoryList>
     </StyledAside>
   </HistoryWrap>
-);
+));
 
 History.propTypes = {
   history: PropTypes.arrayOf(

@@ -10,7 +10,7 @@ import {
   HistoryElement,
 } from './styled';
 
-class History extends React.Component {
+class History extends React.PureComponent {
   render() {
     const { history } = this.props;
     return (
