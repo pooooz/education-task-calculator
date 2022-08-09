@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { StyledInput, StyledHr } from './styled';
+import { StyledInput, StyledHr, ValueInput } from './styled';
 
 class Display extends React.Component {
   render() {
     const { expression } = this.props;
     return (
       <>
-        <StyledInput value={expression} readOnly />
+        <ValueInput value={expression.value} readOnly />
+        <StyledInput value={expression.input} readOnly />
         <StyledHr />
       </>
     );

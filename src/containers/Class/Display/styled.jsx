@@ -19,3 +19,16 @@ export const StyledHr = styled.hr`
   background: transparent;
   outline: none;
 `;
+
+export const ValueInput = styled.input.attrs({ type: 'text' })`
+  display: flex;
+  width: 100%;
+  outline: none;
+  border: none;
+  background: transparent;
+  text-align: right;
+  color: ${({ theme }) => theme.colors.text};
+  opacity: 0.8;
+  font-weight: 500;
+  font-size: 32px;
+`;

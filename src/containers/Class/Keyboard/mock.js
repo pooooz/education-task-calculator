@@ -19,6 +19,8 @@ const buttonValues = [
   '0',
   ')',
   '=',
+  '+/-',
+  '%',
 ];
 
 export { buttonValues };
