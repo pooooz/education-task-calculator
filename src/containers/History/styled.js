@@ -25,6 +25,17 @@ export const HistoryHeading = styled.h1`
   font-size: 32px;
 `;
 
+export const HistoryButton = styled.button`
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.text};
+  text-transform: uppercase;
+  background: ${({ theme }) => theme.colors.background};
+  padding: 5px;
+  border: none;
+  outline: 2px solid ${({ theme }) => theme.colors.border};
+  border-radius: 10px;
+`;
+
 export const HistoryList = styled.ul`
   margin: 50px 0 0 0;
   overflow-y: scroll;
