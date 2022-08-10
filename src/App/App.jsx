@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import { ThemePreferenceContext } from 'utils/context';
@@ -14,6 +14,26 @@ export const App = () => {
     () => ({ currentTheme, setCurrentTheme }),
     [currentTheme]
   );
+
+  useEffect(() => {
+    const localStorageHistory =
+      JSON.parse(localStorage.getItem('history')) ?? [];
+    setHistory(localStorageHistory);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('history', JSON.stringify(history));
+  }, [history]);
+
+  useEffect(() => {
+    const localStorageTheme = localStorage.getItem('theme') ?? 'light';
+    setCurrentTheme(localStorageTheme);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('theme', currentTheme);
+  }, [currentTheme]);
+
   const theme = { colors: colors[currentTheme] };
 
   return (
