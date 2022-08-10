@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Button } from 'components/Button';
 import { buttonValues } from '../mocks';
-import { KeyboardGridContainer } from '../styled';
+import { Button, KeyboardGridContainer } from '../styled';
 
 class Keyboard extends React.Component {
   render() {
