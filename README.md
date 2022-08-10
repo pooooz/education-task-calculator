@@ -10,3 +10,4 @@
 6. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 Alternative solution located in the ["alternative"](https://github.com/pooooz/education-task-calculator/tree/alternative) branch
+Basic solution located in the ["main"](https://github.com/pooooz/education-task-calculator) branch

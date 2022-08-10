@@ -1,54 +1,61 @@
-import React, { useMemo, useReducer, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import { Calculator } from 'utils/calculator';
-import { commands } from 'actions';
 import { ThemePreferenceContext } from 'utils/context';
 import { AppRouter } from './AppRouter';
 import { colors } from '../theme';
 import { GlobalStyles } from './styled';
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'command': {
-      const newCalc = Object.assign(state.calculator, {});
-      newCalc.execute(commands.CalculateCommand(action.payload));
-      return { calculator: newCalc };
-    }
-    case 'clear': {
-      const newCalc = Object.assign(state.calculator, {});
-      newCalc.clearHistory();
-      return { calculator: newCalc };
-    }
-    default: {
-      throw new Error('App.jsx error');
-    }
-  }
-};
-
 export const App = () => {
-  const [calculator, dispatch] = useReducer(reducer, {
-    calculator: new Calculator(),
-  });
-
-  const clearHistory = () => dispatch({ type: 'clear' });
-  const dispatchCommand = (value) =>
-    dispatch({ type: 'command', payload: value });
+  const [history, setHistory] = useState([]);
 
   const [currentTheme, setCurrentTheme] = useState('light');
   const themeContestProviderValue = useMemo(
     () => ({ currentTheme, setCurrentTheme }),
     [currentTheme]
   );
+
+  useEffect(() => {
+    const localStorageHistory =
+      JSON.parse(localStorage.getItem('history')) ?? [];
+    setHistory(localStorageHistory);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(
+      'history',
+      JSON.stringify(history, (key, value) => {
+        if (Number.isNaN(value.result)) {
+          return { ...value, result: 'NaN' };
+        }
+        switch (value.result) {
+          case Infinity: {
+            return { ...value, result: 'Infinity' };
+          }
+          default: {
+            return value;
+          }
+        }
+      })
+    );
+  }, [history]);
+
+  useEffect(() => {
+    const localStorageTheme = localStorage.getItem('theme') ?? 'light';
+    setCurrentTheme(localStorageTheme);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('theme', currentTheme);
+  }, [currentTheme]);
+
   const theme = { colors: colors[currentTheme] };
 
   return (
     <ThemePreferenceContext.Provider value={themeContestProviderValue}>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <AppRouter
-          calculations={{ ...calculator, clearHistory, dispatchCommand }}
-        />
+        <AppRouter history={history} setHistory={setHistory} />
       </ThemeProvider>
     </ThemePreferenceContext.Provider>
   );

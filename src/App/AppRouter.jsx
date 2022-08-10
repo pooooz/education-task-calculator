@@ -1,42 +1,36 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
+import { paths } from 'constants/routes';
 import { Header } from 'containers/Header';
-import { Calculator } from 'pages/Functional/Calculator';
-import { Settings } from 'pages/Functional/Settings';
+import { Calculator } from 'pages/Calculator/Functional';
+import { Settings } from 'pages/Settings/Functional';
 import { NotFound } from 'pages/NotFound';
-import { ClassCalculator } from 'pages/Class/Calculator';
-import { ClassSettings } from 'pages/Class/Settings';
+import { ClassCalculator } from 'pages/Calculator/Class';
+import { ClassSettings } from 'pages/Settings/Class';
 
-export const AppRouter = ({ calculations }) => (
+export const AppRouter = ({ history, setHistory }) => (
   <BrowserRouter basename="/education-task-calculator">
     <Routes>
-      <Route path="/" element={<Header />}>
+      <Route element={<Header />}>
+        <Route path="/" element={<Navigate to="/home" />} />
         <Route
-          path="/home"
+          path={paths.home}
+          element={<Calculator history={history} setHistory={setHistory} />}
+        />
+        <Route
+          path={paths.classHome}
           element={
-            <Calculator
-              calculator={calculations.calculator}
-              calculate={calculations.dispatchCommand}
-            />
+            <ClassCalculator history={history} setHistory={setHistory} />
           }
         />
         <Route
-          path="/homecl"
-          element={
-            <ClassCalculator
-              calculator={calculations.calculator}
-              calculate={calculations.dispatchCommand}
-            />
-          }
+          path={paths.settings}
+          element={<Settings setHistory={setHistory} />}
         />
         <Route
-          path="/settings"
-          element={<Settings clearHistory={calculations.clearHistory} />}
-        />
-        <Route
-          path="/settingscl"
-          element={<ClassSettings clearHistory={calculations.clearHistory} />}
+          path={paths.classSettings}
+          element={<ClassSettings setHistory={setHistory} />}
         />
       </Route>
       <Route path="*" element={<NotFound />} />
