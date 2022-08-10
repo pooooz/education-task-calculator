@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/education-task-calculator/static/css/main.7eed6e33.css",
-    "main.js": "/education-task-calculator/static/js/main.a40b45bf.js",
+    "main.js": "/education-task-calculator/static/js/main.e0335a39.js",
     "static/media/HelveticaNeueRegular.woff2": "/education-task-calculator/static/media/HelveticaNeueRegular.d59df5a538d671a54c79.woff2",
     "static/media/dropdownIcon.svg": "/education-task-calculator/static/media/dropdownIcon.68f6566a4a5e4d1f386641b4db170f1f.svg",
     "index.html": "/education-task-calculator/index.html",
     "main.7eed6e33.css.map": "/education-task-calculator/static/css/main.7eed6e33.css.map",
-    "main.a40b45bf.js.map": "/education-task-calculator/static/js/main.a40b45bf.js.map"
+    "main.e0335a39.js.map": "/education-task-calculator/static/js/main.e0335a39.js.map"
   },
   "entrypoints": [
     "static/css/main.7eed6e33.css",
-    "static/js/main.a40b45bf.js"
+    "static/js/main.e0335a39.js"
   ]
 }
