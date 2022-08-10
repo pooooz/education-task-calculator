@@ -1,6 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
+import { paths } from 'constants/routes';
 import { Header } from 'containers/Header';
 import { Calculator } from 'pages/Calculator/Functional';
 import { Settings } from 'pages/Settings/Functional';
@@ -11,23 +12,24 @@ import { ClassSettings } from 'pages/Settings/Class';
 export const AppRouter = ({ history, setHistory }) => (
   <BrowserRouter basename="/education-task-calculator">
     <Routes>
-      <Route path="/" element={<Header />}>
+      <Route element={<Header />}>
+        <Route path="/" element={<Navigate to="/home" />} />
         <Route
-          path="/home"
+          path={paths.home}
           element={<Calculator history={history} setHistory={setHistory} />}
         />
         <Route
-          path="/homecl"
+          path={paths.classHome}
           element={
             <ClassCalculator history={history} setHistory={setHistory} />
           }
         />
         <Route
-          path="/settings"
+          path={paths.settings}
           element={<Settings setHistory={setHistory} />}
         />
         <Route
-          path="/settingscl"
+          path={paths.classSettings}
           element={<ClassSettings setHistory={setHistory} />}
         />
       </Route>
