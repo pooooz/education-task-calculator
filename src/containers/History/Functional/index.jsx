@@ -12,7 +12,7 @@ import {
 } from '../styled';
 
 const History = React.memo(({ history }) => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   const changeVisibility = () => {
     setIsVisible(!isVisible);

@@ -15,7 +15,7 @@ class History extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      isVisible: false,
+      isVisible: true,
     };
   }
 
