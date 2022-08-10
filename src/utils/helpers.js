@@ -96,7 +96,7 @@ export const handlePressHelper = (
       buttonValue !== 'CE') ||
     (buttonValue === '=' && expression.value.indexOf('=') >= 0)
   ) {
-    if (buttonValue === '=') {
+    if (expression.value && buttonValue === '=') {
       if (expression.value.indexOf('=') >= 0) {
         changeHistory(
           expression.value.slice(0, expression.value.indexOf('=')),

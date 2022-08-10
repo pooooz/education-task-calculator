@@ -22,7 +22,22 @@ export const App = () => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('history', JSON.stringify(history));
+    localStorage.setItem(
+      'history',
+      JSON.stringify(history, (key, value) => {
+        if (Number.isNaN(value.result)) {
+          return { ...value, result: 'NaN' };
+        }
+        switch (value.result) {
+          case Infinity: {
+            return { ...value, result: 'Infinity' };
+          }
+          default: {
+            return value;
+          }
+        }
+      })
+    );
   }, [history]);
 
   useEffect(() => {
