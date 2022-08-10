@@ -34,7 +34,7 @@ History.propTypes = {
   history: PropTypes.arrayOf(
     PropTypes.shape({
       expression: PropTypes.string,
-      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      result: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     })
   ).isRequired,
 };

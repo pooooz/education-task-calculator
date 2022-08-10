@@ -94,7 +94,8 @@ ClassCalculator.propTypes = {
   history: PropTypes.arrayOf(
     PropTypes.shape({
       expression: PropTypes.string.isRequired,
-      result: PropTypes.number.isRequired,
+      result: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        .isRequired,
     })
   ).isRequired,
   setHistory: PropTypes.func.isRequired,
