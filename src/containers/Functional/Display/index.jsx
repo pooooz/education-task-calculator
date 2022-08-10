@@ -12,8 +12,10 @@ const Display = ({ expression }) => (
 );
 
 Display.propTypes = {
-  expression: PropTypes.shape({ value: PropTypes.string.isRequired })
-    .isRequired,
+  expression: PropTypes.shape({
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    input: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }).isRequired,
 };
 
 export { Display };

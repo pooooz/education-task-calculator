@@ -13,10 +13,8 @@ const Keyboard = React.memo(({ handlePress }) => (
   </KeyboardGridContainer>
 ));
 
-/*
 Keyboard.propTypes = {
   handlePress: PropTypes.func.isRequired,
 };
-*/
 
 export { Keyboard };

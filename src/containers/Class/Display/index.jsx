@@ -17,7 +17,10 @@ class Display extends React.Component {
 }
 
 Display.propTypes = {
-  expression: PropTypes.string.isRequired,
+  expression: PropTypes.shape({
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    input: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }).isRequired,
 };
 
 export { Display };
