@@ -33,8 +33,7 @@ export const handleParenthesisMode = (
             payload: buttonValue,
           });
           setIsParenthesis(false);
-          const result = eval(`${expression.input})`);
-
+          const result = Math.round(eval(`${expression.input})`) * 1e3) / 1e3;
           if (
             expression.value === 0 ||
             expression.value === '0' ||
@@ -91,14 +90,21 @@ export const handlePressHelper = (
   if (/\d/.test(buttonValue) || buttonValue === '.') {
     expressionDispatch({ type: 'number', payload: buttonValue });
   } else if (
-    (!expression.value || expression.value === '0') &&
-    buttonValue !== '+/-' &&
-    buttonValue !== 'C' &&
-    buttonValue !== 'CE'
+    ((!expression.value || expression.value === '0') &&
+      buttonValue !== '+/-' &&
+      buttonValue !== 'C' &&
+      buttonValue !== 'CE') ||
+    (buttonValue === '=' && expression.value.indexOf('=') >= 0)
   ) {
     if (buttonValue === '=') {
-      expressionDispatch({ type: 'clear' });
-      changeHistory(expression.input, expression.input);
+      if (expression.value.indexOf('=') >= 0) {
+        changeHistory(
+          expression.value.slice(0, expression.value.indexOf('=')),
+          currentValue
+        );
+      } else {
+        changeHistory(expression.input, expression.input);
+      }
     } else if (buttonValue === '(') {
       expressionDispatch({ type: 'openParenthesis' });
       setIsParenthesis(true);

@@ -28,9 +28,21 @@ const Calculator = ({ history, setHistory }) => {
     if (event.target.tagName !== 'BUTTON') return;
     const buttonValue = event.target.textContent;
 
-    if (isParenthesis) {
-      if (buttonValue === '+/-' || buttonValue === '=') return;
-      handleParenthesisMode(
+    try {
+      if (isParenthesis) {
+        if (buttonValue === '+/-' || buttonValue === '=') return;
+        handleParenthesisMode(
+          buttonValue,
+          expression,
+          expressionDispatch,
+          setIsParenthesis,
+          changeHistory,
+          setCalculator,
+          calculator.getCurrentValue()
+        );
+        return;
+      }
+      handlePressHelper(
         buttonValue,
         expression,
         expressionDispatch,
@@ -39,17 +51,9 @@ const Calculator = ({ history, setHistory }) => {
         setCalculator,
         calculator.getCurrentValue()
       );
-      return;
+    } catch (error) {
+      console.error(error);
     }
-    handlePressHelper(
-      buttonValue,
-      expression,
-      expressionDispatch,
-      setIsParenthesis,
-      changeHistory,
-      setCalculator,
-      calculator.getCurrentValue()
-    );
   };
   return (
     <HomeContainer>

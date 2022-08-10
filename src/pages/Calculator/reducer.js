@@ -76,13 +76,13 @@ export const expressionReducer = (expression, action) => {
       };
     }
     case 'parenthesisMode': {
-      if (/\d/.test(action.payload) || action.payload === '.') {
+      if (action.payload === '(' && /\d/.test(expression.input.at(-1))) {
         return {
-          input: expression.input + action.payload,
+          input: expression.input,
           value: expression.value,
         };
       }
-      if (action.payload === '(' && /\d/.test(expression.input.at(-1))) {
+      if (/\d/.test(action.payload) && expression.input.at(-1) === ')') {
         return {
           input: expression.input,
           value: expression.value,
@@ -95,6 +95,12 @@ export const expressionReducer = (expression, action) => {
       ) {
         return {
           input: expression.input,
+          value: expression.value,
+        };
+      }
+      if (/\d/.test(action.payload) || action.payload === '.') {
+        return {
+          input: expression.input + action.payload,
           value: expression.value,
         };
       }
