@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  StyledAside,
-  StyledHr,
-  HistoryHeading,
+  Aside,
+  ColoredHr,
+  Heading,
   HistoryWrap,
-  HistoryList,
+  List,
   HistoryElement,
-  HistoryButton,
+  VisibilityButton,
 } from '../styled';
 
 class History extends React.PureComponent {
@@ -29,14 +29,14 @@ class History extends React.PureComponent {
 
     return (
       <HistoryWrap>
-        <StyledHr />
-        <StyledAside>
-          <HistoryHeading>History</HistoryHeading>
-          <HistoryButton onClick={changeVisibility}>
+        <ColoredHr />
+        <Aside>
+          <Heading>History</Heading>
+          <VisibilityButton onClick={changeVisibility}>
             {isVisible ? 'Hide' : 'Show'}
-          </HistoryButton>
+          </VisibilityButton>
           {isVisible && (
-            <HistoryList>
+            <List>
               {history.length ? (
                 history.map((elem, index) => (
                   <HistoryElement key={elem.expression + index}>
@@ -46,9 +46,9 @@ class History extends React.PureComponent {
               ) : (
                 <HistoryElement>History is empty</HistoryElement>
               )}
-            </HistoryList>
+            </List>
           )}
-        </StyledAside>
+        </Aside>
       </HistoryWrap>
     );
   }

@@ -6,27 +6,27 @@ export const HistoryWrap = styled.div`
   display: flex;
 `;
 
-export const StyledHr = styled.hr`
+export const ColoredHr = styled.hr`
   height: 100%;
   width: 0;
   border: none;
   border-left: 2px solid ${({ theme }) => theme.colors.border};
 `;
 
-export const StyledAside = styled.aside`
+export const Aside = styled.aside`
   flex-grow: 1;
   height: 100%;
   padding: 0 ${({ theme }) => theme.spaces.l};
 `;
 
-export const HistoryHeading = styled.h1`
+export const Heading = styled.h1`
   text-align: center;
   color: ${({ theme }) => theme.colors.text};
   font-weight: 400;
   font-size: ${({ theme }) => theme.fontSizes.m};
 `;
 
-export const HistoryButton = styled.button`
+export const VisibilityButton = styled.button`
   cursor: pointer;
   color: ${({ theme }) => theme.colors.text};
   text-transform: uppercase;
@@ -37,7 +37,7 @@ export const HistoryButton = styled.button`
   border-radius: 10px;
 `;
 
-export const HistoryList = styled.ul`
+export const List = styled.ul`
   margin: ${({ theme }) => theme.spaces.xxl} 0 0 0;
   height: 80%;
   word-break: break-all;

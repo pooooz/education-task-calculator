@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { StyledInput, StyledHr, ValueInput } from '../styled';
+import { ExpressionInput, ColoredHr, ValueInput } from '../styled';
 
 const Display = ({ expression }) => (
   <>
     <ValueInput value={expression.value} readOnly />
-    <StyledInput value={expression.input} readOnly />
-    <StyledHr />
+    <ExpressionInput value={expression.input} readOnly />
+    <ColoredHr />
   </>
 );
 

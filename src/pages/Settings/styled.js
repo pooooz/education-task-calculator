@@ -4,7 +4,7 @@ export const SettingsContainer = styled.section`
   padding: 60px 80px;
 `;
 
-export const SettingHeading = styled.h1`
+export const Heading = styled.h1`
   color: ${({ theme }) => theme.colors.text};
   font-weight: 400;
   font-size: ${({ theme }) => theme.fontSizes.xl};
