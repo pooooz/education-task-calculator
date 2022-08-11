@@ -4,21 +4,21 @@ export const KeyboardGridContainer = styled.div`
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(5, 1fr);
-  grid-column-gap: 6vw;
-  grid-row-gap: 3vh;
-  margin: 25px 0 0 0;
+  grid-column-gap: 5%;
+  grid-row-gap: 3%;
+  margin: ${({ theme }) => theme.spaces.l} 0 0 0;
 `;
 
 export const Button = styled.button`
   cursor: pointer;
-  width: 8vw;
-  height: 8vw;
+  width: 100px;
+  height: 100px;
   color: ${({ theme }) => theme.colors.text};
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 32px;
   background: ${({ theme, children }) =>
     children === '=' ? theme.colors.equal : theme.colors.button};
-  font-size: 64px;
+  font-size: ${({ theme }) => theme.fontSizes.l};
 
   &:hover {
     filter: brightness(90%);

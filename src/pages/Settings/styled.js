@@ -7,22 +7,22 @@ export const SettingsContainer = styled.section`
 export const SettingHeading = styled.h1`
   color: ${({ theme }) => theme.colors.text};
   font-weight: 400;
-  font-size: 64px;
+  font-size: ${({ theme }) => theme.fontSizes.xl};
 `;
 
 export const ClearButton = styled.button`
   cursor: pointer;
   width: 400px;
   height: 90px;
-  margin: 32px 0 0 0;
-  padding: 0 0 0 25px;
+  margin: ${({ theme }) => theme.spaces.xl} 0 0 0;
+  padding: 0 0 0 ${({ theme }) => theme.spaces.l};
   text-transform: capitalize;
   background-color: ${({ theme }) => theme.colors.clearButton};
   border: none;
   outline: 2px solid ${({ theme }) => theme.colors.border};
   border-radius: 8px;
   color: ${({ theme }) => theme.colors.text};
-  font-size: 32px;
+  font-size: ${({ theme }) => theme.fontSizes.m};
   text-align: left;
   transition: filter 300ms ease-out;
 

@@ -15,14 +15,14 @@ export const ReloadButton = styled.button`
   cursor: pointer;
   width: 300px;
   height: 50px;
-  margin: 32px 0 0 0;
+  margin: ${({ theme }) => theme.spaces.xl} 0 0 0;
   text-transform: capitalize;
   background-color: #17d917;
   border: none;
   outline: 2px solid black;
   border-radius: 8px;
   color: white;
-  font-size: 32px;
+  font-size: ${({ theme }) => theme.fontSizes.m};
   text-align: center;
   transition: filter 300ms ease-out;
 

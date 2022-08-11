@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 
 import { ThemePreferenceContext } from 'utils/context';
 import { AppRouter } from './AppRouter';
-import { colors } from '../theme';
+import { colors, spaces, fontSizes } from '../theme';
 import { GlobalStyles } from './styled';
 
 export const App = () => {
@@ -49,7 +49,7 @@ export const App = () => {
     localStorage.setItem('theme', currentTheme);
   }, [currentTheme]);
 
-  const theme = { colors: colors[currentTheme] };
+  const theme = { colors: colors[currentTheme], spaces, fontSizes };
 
   return (
     <ThemePreferenceContext.Provider value={themeContestProviderValue}>

@@ -3,14 +3,14 @@ import styled from 'styled-components';
 export const StyledInput = styled.input.attrs({ type: 'text' })`
   display: flex;
   width: 100%;
-  min-height: 120px;
+  margin: ${({ theme }) => theme.spaces.s} 0 0 0;
   outline: none;
   border: none;
   background: transparent;
   text-align: right;
   color: ${({ theme }) => theme.colors.text};
   font-weight: 500;
-  font-size: 64px;
+  font-size: ${({ theme }) => theme.fontSizes.xl};
 `;
 
 export const StyledHr = styled.hr`
@@ -30,5 +30,5 @@ export const ValueInput = styled.input.attrs({ type: 'text' })`
   color: ${({ theme }) => theme.colors.text};
   opacity: 0.8;
   font-weight: 500;
-  font-size: 32px;
+  font-size: ${({ theme }) => theme.fontSizes.m};
 `;

@@ -7,6 +7,6 @@ export const HomeContainer = styled.section`
 `;
 
 export const CalculatorContainer = styled.div`
-  flex-grow: 1;
-  padding: 25px;
+  width: 75%;
+  padding: ${({ theme }) => theme.spaces.l};
 `;

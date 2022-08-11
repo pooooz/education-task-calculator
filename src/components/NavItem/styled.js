@@ -5,8 +5,8 @@ export const StyledNavLink = styled(NavLink)`
   color: ${({ theme }) => theme.colors.white};
   opacity: 0.7;
   text-decoration: none;
-  margin: 0 0 0 32px;
-  font-size: 32px;
+  margin: 0 0 0 ${({ theme }) => theme.spaces.xl};
+  font-size: ${({ theme }) => theme.fontSizes.m};
   &.active {
     opacity: 1;
     position: relative;

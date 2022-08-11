@@ -24,3 +24,17 @@ export const colors = {
   light,
   dark,
 };
+
+export const spaces = {
+  s: '8px',
+  l: '25px',
+  xl: '32px',
+  xxl: '50px',
+};
+
+export const fontSizes = {
+  s: '24px',
+  m: '32px',
+  l: '48px',
+  xl: '64px',
+};

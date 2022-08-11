@@ -4,14 +4,14 @@ export const BaseHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 11vh;
-  padding: 0 32px;
+  min-height: 13%;
+  padding: 0 ${({ theme }) => theme.spaces.xl};
   background: ${({ theme }) => theme.colors.header};
 `;
 
 export const Heading = styled.h1`
   color: ${({ theme }) => theme.colors.white};
-  font-size: 32px;
+  font-size: ${({ theme }) => theme.fontSizes.m};
   font-weight: 400;
 `;
 

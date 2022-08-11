@@ -27,10 +27,10 @@ export const StyledSelect = styled.select`
   border: none;
   outline: 2px solid ${({ theme }) => theme.colors.border};
   border-radius: 8px;
-  padding: 0 0 0 30px;
+  padding: 0 0 0 ${({ theme }) => theme.spaces.xl};
   font-family: inherit;
   color: ${({ theme }) => theme.colors.text};
-  font-size: 32px;
+  font-size: ${({ theme }) => theme.fontSizes.m};
   option {
     color: ${({ theme }) => theme.colors.text};
     background-color: ${({ theme }) => theme.colors.background};

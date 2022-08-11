@@ -4,6 +4,11 @@ export const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
   }
 
   body {
@@ -17,5 +22,13 @@ export const GlobalStyles = createGlobalStyle`
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+  }
+
+  #root {
+    height: 100%;
+  }
+  
+  main {
+    height: 87%;
   }
 `;
