@@ -47,6 +47,8 @@ export const getColoredTheme = (currentTheme) => ({
   fontSizes,
 });
 
+const fullScreen = '100%';
+
 export const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
@@ -55,7 +57,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   html, body {
-    height: 100%;
+    height: ${fullScreen};
   }
 
   body {
@@ -72,7 +74,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   #root {
-    height: 100%;
+    height: ${fullScreen};
   }
   
   main {

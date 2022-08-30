@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+const buttonSize = '100px';
+
 export const KeyboardGridContainer = styled.div`
   display: grid;
   justify-items: center;
@@ -11,8 +13,8 @@ export const KeyboardGridContainer = styled.div`
 
 export const Button = styled.button`
   cursor: pointer;
-  width: 100px;
-  height: 100px;
+  width: ${buttonSize};
+  height: ${buttonSize};
   color: ${({ theme }) => theme.colors.text};
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 32px;

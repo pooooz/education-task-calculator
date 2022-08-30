@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
+const fullSize = '100%';
+
 export const StyledNavLink = styled(NavLink)`
   position: relative;
   color: ${({ theme }) => theme.colors.white};
@@ -16,11 +18,11 @@ export const StyledNavLink = styled(NavLink)`
           position: absolute;
           content: '';
           height: 2px;
-          bottom: -5px;
           margin: 0 auto;
           left: 0;
           right: 0;
-          width: 100%;
+          bottom: -5px;
+          width: ${fullSize};
           background: ${({ theme }) => theme.colors.white};
         }
       `;

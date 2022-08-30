@@ -1,13 +1,22 @@
 import styled from 'styled-components';
 
+const fullSize = '100%';
+
+const historyWidth = '25%';
+
+const listHeight = '80%';
+
+const thumbColor = '#757474';
+const thumbWidth = '10px';
+
 export const HistoryWrap = styled.div`
   padding: ${({ theme }) => theme.spaces.l} 0;
-  width: 25%;
+  width: ${historyWidth};
   display: flex;
 `;
 
 export const ColoredHr = styled.hr`
-  height: 100%;
+  height: ${fullSize};
   width: 0;
   border: none;
   border-left: 2px solid ${({ theme }) => theme.colors.border};
@@ -15,7 +24,7 @@ export const ColoredHr = styled.hr`
 
 export const Aside = styled.aside`
   flex-grow: 1;
-  height: 100%;
+  height: ${fullSize};
   padding: 0 ${({ theme }) => theme.spaces.l};
 `;
 
@@ -39,13 +48,13 @@ export const VisibilityButton = styled.button`
 
 export const List = styled.ul`
   margin: ${({ theme }) => theme.spaces.xxl} 0 0 0;
-  height: 80%;
+  height: ${listHeight};
   word-break: break-all;
   overflow-y: scroll;
   color: ${({ theme }) => theme.colors.text};
 
   &::-webkit-scrollbar {
-    width: 10px;
+    width: ${thumbWidth};
   }
 
   &::-webkit-scrollbar-track {
@@ -59,7 +68,7 @@ export const List = styled.ul`
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: #757474;
+    background: ${thumbColor};
   }
 `;
 
