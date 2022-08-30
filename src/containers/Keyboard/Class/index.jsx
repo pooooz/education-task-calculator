@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { buttonValues } from '../mocks';
 import { Button, KeyboardGridContainer } from '../styled';
 
-class Keyboard extends React.Component {
+export class Keyboard extends React.Component {
   render() {
     const { handlePress } = this.props;
     return (
@@ -20,5 +20,3 @@ class Keyboard extends React.Component {
 Keyboard.propTypes = {
   handlePress: PropTypes.func.isRequired,
 };
-
-export { Keyboard };

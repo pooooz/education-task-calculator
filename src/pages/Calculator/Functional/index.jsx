@@ -1,5 +1,4 @@
-import React, { useReducer, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext, useReducer, useState } from 'react';
 
 import Calc from 'utils/calculator';
 
@@ -7,12 +6,16 @@ import { Display } from 'containers/Display/Functional';
 import { Keyboard } from 'containers/Keyboard/Functional';
 import { History } from 'containers/History/Functional';
 import { handleParenthesisMode, handlePressHelper } from 'utils/helpers';
+import { HistoryContext } from 'utils/context';
 import { expressionReducer } from '../reducer';
 import { CalculatorContainer, HomeContainer } from '../styled';
 
-const Calculator = ({ history, setHistory }) => {
+export const Calculator = () => {
+  const { history, setHistory } = useContext(HistoryContext);
+
   const [calculator, setCalculator] = useState(new Calc(0));
   const [isParenthesis, setIsParenthesis] = useState(false);
+
   const [expression, expressionDispatch] = useReducer(expressionReducer, {
     input: 0,
     value: 0,
@@ -28,33 +31,24 @@ const Calculator = ({ history, setHistory }) => {
     if (event.target.tagName !== 'BUTTON') return;
     const buttonValue = event.target.textContent;
 
-    try {
-      if (isParenthesis) {
-        if (buttonValue === '+/-' || buttonValue === '=') return;
-        handleParenthesisMode(
-          buttonValue,
-          expression,
-          expressionDispatch,
-          setIsParenthesis,
-          changeHistory,
-          setCalculator,
-          calculator.getCurrentValue()
-        );
-        return;
-      }
-      handlePressHelper(
-        buttonValue,
-        expression,
-        expressionDispatch,
-        setIsParenthesis,
-        changeHistory,
-        setCalculator,
-        calculator.getCurrentValue()
-      );
-    } catch (error) {
-      console.error(error);
+    const helperArguments = [
+      buttonValue,
+      expression,
+      expressionDispatch,
+      setIsParenthesis,
+      changeHistory,
+      setCalculator,
+      calculator.getCurrentValue(),
+    ];
+
+    if (isParenthesis) {
+      if (buttonValue === '+/-' || buttonValue === '=') return;
+      handleParenthesisMode(...helperArguments);
+      return;
     }
+    handlePressHelper(...helperArguments);
   };
+
   return (
     <HomeContainer>
       <CalculatorContainer>
@@ -65,16 +59,3 @@ const Calculator = ({ history, setHistory }) => {
     </HomeContainer>
   );
 };
-
-Calculator.propTypes = {
-  history: PropTypes.arrayOf(
-    PropTypes.shape({
-      expression: PropTypes.string.isRequired,
-      result: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-        .isRequired,
-    })
-  ).isRequired,
-  setHistory: PropTypes.func.isRequired,
-};
-
-export { Calculator };

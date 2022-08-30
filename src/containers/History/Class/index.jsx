@@ -11,7 +11,7 @@ import {
   VisibilityButton,
 } from '../styled';
 
-class History extends React.PureComponent {
+export class History extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,9 +32,11 @@ class History extends React.PureComponent {
         <ColoredHr />
         <Aside>
           <Heading>History</Heading>
-          <VisibilityButton onClick={changeVisibility}>
-            {isVisible ? 'Hide' : 'Show'}
-          </VisibilityButton>
+          {Boolean(history.length) && (
+            <VisibilityButton onClick={changeVisibility}>
+              {isVisible ? 'Hide' : 'Show'}
+            </VisibilityButton>
+          )}
           {isVisible && (
             <List>
               {history.length ? (
@@ -62,5 +64,3 @@ History.propTypes = {
     })
   ).isRequired,
 };
-
-export { History };

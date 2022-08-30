@@ -1,21 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 
 import { ThemeSwitcher } from 'containers/ThemeSwitcher/Functional';
+import { HistoryContext } from 'utils/context';
 import { Heading, SettingsContainer, ClearButton } from '../styled';
 
-const Settings = ({ setHistory }) => (
-  <SettingsContainer>
-    <Heading>Settings</Heading>
-    <ThemeSwitcher />
-    <ClearButton type="button" onClick={() => setHistory([])}>
-      Clear all history
-    </ClearButton>
-  </SettingsContainer>
-);
+export const Settings = () => {
+  const { setHistory } = useContext(HistoryContext);
 
-Settings.propTypes = {
-  setHistory: PropTypes.func.isRequired,
+  const clearHistory = () => {
+    setHistory([]);
+  };
+
+  return (
+    <SettingsContainer>
+      <Heading>Settings</Heading>
+      <ThemeSwitcher />
+      <ClearButton type="button" onClick={clearHistory}>
+        Clear all history
+      </ClearButton>
+    </SettingsContainer>
+  );
 };
-
-export { Settings };

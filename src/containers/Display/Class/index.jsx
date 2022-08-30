@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { ExpressionInput, ColoredHr, ValueInput } from '../styled';
 
-class Display extends React.Component {
+export class Display extends React.Component {
   render() {
     const { expression } = this.props;
     return (
@@ -22,5 +22,3 @@ Display.propTypes = {
     input: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   }).isRequired,
 };
-
-export { Display };

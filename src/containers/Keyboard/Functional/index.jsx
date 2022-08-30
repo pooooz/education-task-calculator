@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { buttonValues } from '../mocks';
 import { Button, KeyboardGridContainer } from '../styled';
 
-const Keyboard = React.memo(({ handlePress }) => (
+export const Keyboard = React.memo(({ handlePress }) => (
   <KeyboardGridContainer onClick={handlePress}>
     {buttonValues.map((value) => (
       <Button key={value}>{value}</Button>
@@ -15,5 +15,3 @@ const Keyboard = React.memo(({ handlePress }) => (
 Keyboard.propTypes = {
   handlePress: PropTypes.func.isRequired,
 };
-
-export { Keyboard };

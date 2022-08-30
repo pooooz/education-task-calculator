@@ -19,6 +19,10 @@ export class ErrorBoundary extends React.Component {
     console.error(error.message);
   }
 
+  handleReload() {
+    this.setState({ hasError: false });
+  }
+
   render() {
     const { error, hasError } = this.state;
     const { children } = this.props;
@@ -27,9 +31,7 @@ export class ErrorBoundary extends React.Component {
         <ErrorBoundaryContainer>
           <ErrorHeading>An error has occurred!!!</ErrorHeading>
           {error.name}: {error.message}
-          <ReloadButton onClick={() => this.setState({ hasError: false })}>
-            Reload
-          </ReloadButton>
+          <ReloadButton onClick={this.handleReload}>Reload</ReloadButton>
         </ErrorBoundaryContainer>
       );
     }

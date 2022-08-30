@@ -7,12 +7,12 @@ import { ThemeSwitcherHeading } from '../styled';
 
 export class ThemeSwitcher extends React.Component {
   render() {
+    const { currentTheme } = this.context;
+
     const selectTheme = (event) => {
       const { setCurrentTheme } = this.context;
       setCurrentTheme(event.target.value);
     };
-
-    const { currentTheme } = this.context;
     return (
       <>
         <ThemeSwitcherHeading>Switch theme</ThemeSwitcherHeading>

@@ -11,7 +11,7 @@ import {
   VisibilityButton,
 } from '../styled';
 
-const History = React.memo(({ history }) => {
+export const History = React.memo(({ history }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   const changeVisibility = () => {
@@ -23,9 +23,11 @@ const History = React.memo(({ history }) => {
       <ColoredHr />
       <Aside>
         <Heading>History</Heading>
-        <VisibilityButton onClick={changeVisibility}>
-          {isVisible ? 'Hide' : 'Show'}
-        </VisibilityButton>
+        {Boolean(history.length) && (
+          <VisibilityButton onClick={changeVisibility}>
+            {isVisible ? 'Hide' : 'Show'}
+          </VisibilityButton>
+        )}
         {isVisible && (
           <List>
             {history.length ? (
@@ -52,5 +54,3 @@ History.propTypes = {
     })
   ).isRequired,
 };
-
-export { History };
