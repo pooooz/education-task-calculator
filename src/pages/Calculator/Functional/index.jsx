@@ -2,9 +2,9 @@ import React, { useReducer, useState } from 'react';
 
 import Calc from 'utils/calculator';
 
-import { Display } from 'containers/Display/Functional';
-import { Keyboard } from 'containers/Keyboard/Functional';
-import { History } from 'containers/History/Functional';
+import { Display } from 'components/Display/Functional';
+import { Keyboard } from 'components/Keyboard/Functional';
+import { History } from 'components/History/Functional';
 import { handleParenthesisMode, handlePressHelper } from 'utils/helpers';
 import {
   getCalculationsHistory,

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ThemeSwitcher } from 'containers/ThemeSwitcher/Functional';
+import { ThemeSwitcher } from 'components/ThemeSwitcher/Functional';
 import { setCalculationsHistory } from 'utils/localStorage';
 import { Heading, SettingsContainer, ClearButton } from '../styled';
 

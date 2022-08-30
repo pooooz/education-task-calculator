@@ -59,6 +59,7 @@ module.exports = {
     'react/prefer-stateless-function': 0,
     'no-eval': 0,
     'no-use-before-define': ['warn'],
+    'import/no-cycle': 0,
   },
   overrides: [
     {
