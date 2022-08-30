@@ -49,6 +49,42 @@ module.exports = {
         namedComponents: 'function-declaration',
       },
     ],
+    'sort-imports': [
+      'error',
+      {
+        ignoreCase: true,
+        ignoreDeclarationSort: true,
+      },
+    ],
+    'import/order': [
+      'error',
+      {
+        'newlines-between': 'always',
+        groups: [
+          'external',
+          'builtin',
+          'internal',
+          'sibling',
+          'parent',
+          'index',
+        ],
+        pathGroups: [
+          {
+            pattern: 'components',
+            group: 'internal',
+          },
+          {
+            pattern: 'pages/**',
+            group: 'internal',
+          },
+          {
+            pattern: 'utils/**',
+            group: 'internal',
+            position: 'after',
+          },
+        ],
+      },
+    ],
     'no-plusplus': 0,
     'max-classes-per-file': 0,
     'react/no-array-index-key': 0,

@@ -2,12 +2,11 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import { ThemePreferenceContext } from 'utils/context';
-
 import { getTheme, setTheme } from 'utils/localStorage';
 
 import { AppRouter } from './AppRouter';
 
-import { GlobalStyles, getColoredTheme } from '../theme';
+import { getColoredTheme, GlobalStyles } from '../theme';
 
 export const App = () => {
   const [currentTheme, setCurrentTheme] = useState('light');

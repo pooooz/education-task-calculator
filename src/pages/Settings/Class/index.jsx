@@ -1,8 +1,10 @@
 import React from 'react';
 
 import { ThemeSwitcher } from 'components/ThemeSwitcher/Class';
+
 import { setCalculationsHistory } from 'utils/localStorage';
-import { Heading, SettingsContainer, ClearButton } from '../styled';
+
+import { ClearButton, Heading, SettingsContainer } from '../styled';
 
 export class ClassSettings extends React.Component {
   render() {

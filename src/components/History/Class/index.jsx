@@ -1,13 +1,14 @@
 import React from 'react';
 
 import { getCalculationsHistory } from 'utils/localStorage';
+
 import {
   Aside,
   ColoredHr,
   Heading,
+  HistoryElement,
   HistoryWrap,
   List,
-  HistoryElement,
   VisibilityButton,
 } from '../styled';
 

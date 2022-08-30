@@ -2,6 +2,7 @@ import React from 'react';
 
 import { NavItem } from 'components/NavItem';
 import { routes } from 'constants/routes';
+
 import { BaseHeader, Heading, Navbar } from './styled';
 
 export const Header = React.memo(() => (

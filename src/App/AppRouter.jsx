@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import { routes } from 'constants/routes';
-
 import { NotFound } from 'pages/NotFound';
 
 export const AppRouter = () => (

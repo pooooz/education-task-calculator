@@ -1,12 +1,10 @@
 import React from 'react';
 
-import { Calculator } from '../pages/Calculator/Functional';
-import { Settings } from '../pages/Settings/Functional';
-
-import { ClassCalculator } from '../pages/Calculator/Class';
-import { ClassSettings } from '../pages/Settings/Class';
-
-import { Layout } from '../components/Layout';
+import { Calculator } from 'pages/Calculator/Functional';
+import { Settings } from 'pages/Settings/Functional';
+import { ClassCalculator } from 'pages/Calculator/Class';
+import { ClassSettings } from 'pages/Settings/Class';
+import { Layout } from 'components/Layout';
 
 const home = '/home';
 const settings = '/settings';

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ExpressionInput, ColoredHr, ValueInput } from '../styled';
+import { ColoredHr, ExpressionInput, ValueInput } from '../styled';
 
 export class Display extends React.Component {
   render() {

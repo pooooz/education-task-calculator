@@ -1,7 +1,9 @@
 import React from 'react';
 
-import { ThemePreferenceContext } from 'utils/context';
 import { Select } from 'components/Select';
+
+import { ThemePreferenceContext } from 'utils/context';
+
 import { colorNames } from '../mocks';
 import { ThemeOption, ThemeSwitcherHeading } from '../styled';
 

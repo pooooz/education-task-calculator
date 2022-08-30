@@ -6,9 +6,9 @@ import {
   Aside,
   ColoredHr,
   Heading,
+  HistoryElement,
   HistoryWrap,
   List,
-  HistoryElement,
   VisibilityButton,
 } from '../styled';
 

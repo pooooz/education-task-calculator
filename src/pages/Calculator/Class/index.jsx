@@ -1,9 +1,10 @@
 import React from 'react';
 
-import Calc from 'utils/calculator';
 import { Display } from 'components/Display/Class';
 import { Keyboard } from 'components/Keyboard/Class';
 import { History } from 'components/History/Class';
+
+import Calc from 'utils/calculator';
 import { handleParenthesisMode, handlePressHelper } from 'utils/helpers';
 import {
   getCalculationsHistory,
