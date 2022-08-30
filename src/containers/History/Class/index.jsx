@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
+import { getCalculationsHistory } from 'utils/localStorage';
 import {
   Aside,
   ColoredHr,
@@ -11,7 +11,7 @@ import {
   VisibilityButton,
 } from '../styled';
 
-export class History extends React.PureComponent {
+export class History extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +20,7 @@ export class History extends React.PureComponent {
   }
 
   render() {
-    const { history } = this.props;
+    const history = getCalculationsHistory();
     const { isVisible } = this.state;
 
     const changeVisibility = () => {
@@ -55,12 +55,3 @@ export class History extends React.PureComponent {
     );
   }
 }
-
-History.propTypes = {
-  history: PropTypes.arrayOf(
-    PropTypes.shape({
-      expression: PropTypes.string,
-      result: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    })
-  ).isRequired,
-};

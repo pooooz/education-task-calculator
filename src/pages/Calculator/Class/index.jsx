@@ -5,7 +5,11 @@ import { Display } from 'containers/Display/Class';
 import { Keyboard } from 'containers/Keyboard/Class';
 import { History } from 'containers/History/Class';
 import { handleParenthesisMode, handlePressHelper } from 'utils/helpers';
-import { HistoryContext } from 'utils/context';
+import {
+  getCalculationsHistory,
+  setCalculationsHistory,
+} from 'utils/localStorage';
+
 import { CalculatorContainer, HomeContainer } from '../styled';
 import { expressionReducer } from '../reducer';
 
@@ -23,13 +27,12 @@ export class ClassCalculator extends React.Component {
   }
 
   render() {
-    const { history } = this.context;
+    const history = getCalculationsHistory();
 
     const changeHistory = (exp, res) => {
-      const { setHistory } = this.context;
       const newHistory = [...history];
       newHistory.unshift({ expression: exp, result: res });
-      setHistory(newHistory);
+      setCalculationsHistory(newHistory);
     };
 
     const setIsParenthesis = (value) => {
@@ -80,10 +83,8 @@ export class ClassCalculator extends React.Component {
           <Display expression={expression} />
           <Keyboard handlePress={handlePress} />
         </CalculatorContainer>
-        <History history={history} />
+        <History />
       </HomeContainer>
     );
   }
 }
-
-ClassCalculator.contextType = HistoryContext;

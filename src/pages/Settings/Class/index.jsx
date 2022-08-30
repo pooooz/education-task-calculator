@@ -1,14 +1,13 @@
 import React from 'react';
 
 import { ThemeSwitcher } from 'containers/ThemeSwitcher/Class';
-import { HistoryContext } from 'utils/context';
+import { setCalculationsHistory } from 'utils/localStorage';
 import { Heading, SettingsContainer, ClearButton } from '../styled';
 
 export class ClassSettings extends React.Component {
   render() {
     const clearHistory = () => {
-      const { setHistory } = this.context;
-      setHistory([]);
+      setCalculationsHistory([]);
     };
 
     return (
@@ -22,5 +21,3 @@ export class ClassSettings extends React.Component {
     );
   }
 }
-
-ClassSettings.contextType = HistoryContext;

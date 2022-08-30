@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+
+import { getCalculationsHistory } from 'utils/localStorage';
 
 import {
   Aside,
@@ -11,7 +12,8 @@ import {
   VisibilityButton,
 } from '../styled';
 
-export const History = React.memo(({ history }) => {
+export const History = () => {
+  const history = getCalculationsHistory();
   const [isVisible, setIsVisible] = useState(true);
 
   const changeVisibility = () => {
@@ -44,13 +46,4 @@ export const History = React.memo(({ history }) => {
       </Aside>
     </HistoryWrap>
   );
-});
-
-History.propTypes = {
-  history: PropTypes.arrayOf(
-    PropTypes.shape({
-      expression: PropTypes.string,
-      result: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    })
-  ).isRequired,
 };

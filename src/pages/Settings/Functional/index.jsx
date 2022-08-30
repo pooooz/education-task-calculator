@@ -1,14 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { ThemeSwitcher } from 'containers/ThemeSwitcher/Functional';
-import { HistoryContext } from 'utils/context';
+import { setCalculationsHistory } from 'utils/localStorage';
 import { Heading, SettingsContainer, ClearButton } from '../styled';
 
 export const Settings = () => {
-  const { setHistory } = useContext(HistoryContext);
-
   const clearHistory = () => {
-    setHistory([]);
+    setCalculationsHistory([]);
   };
 
   return (
