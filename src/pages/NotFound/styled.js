@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+const notFoundWidth = '350px';
+const notFoundHeight = '200px';
+const notFoundBackground = '#FFFFFF';
+
+const notFoundHeadingTextColor = '#000000';
+
+const goHomeLinkTextColor = '#434343';
+const goHomeLinkTextColorHover = '#989494';
+
 export const NotFoundContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -10,12 +19,11 @@ export const NotFoundContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 350px;
-  height: 200px;
-  background: white;
+  width: ${notFoundWidth};
+  height: ${notFoundHeight};
+  background: ${notFoundBackground};
   border: 1px solid black;
   border-radius: 0% 0% 0% 0% / 0% 0% 0% 0%;
-  color: white;
   box-shadow: 20px 20px rgba(0, 0, 0, 0.15);
   transition: all 0.4s ease;
 
@@ -26,14 +34,14 @@ export const NotFoundContainer = styled.div`
 `;
 
 export const NotFoundHeading = styled.h1`
-  color: black;
+  color: ${notFoundHeadingTextColor};
 `;
 
 export const StyledNavLink = styled(NavLink)`
   text-decoration: underline;
-  color: #434343;
+  color: ${goHomeLinkTextColor};
 
   &:hover {
-    color: #989494;
+    color: ${goHomeLinkTextColorHover};
   }
 `;

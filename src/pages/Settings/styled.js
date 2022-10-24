@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+const clearButtonWidth = '400px';
+const clearButtonHeight = '90px';
+
 export const SettingsContainer = styled.section`
   padding: 60px 80px;
 `;
@@ -12,8 +15,8 @@ export const Heading = styled.h1`
 
 export const ClearButton = styled.button`
   cursor: pointer;
-  width: 400px;
-  height: 90px;
+  width: ${clearButtonWidth};
+  height: ${clearButtonHeight};
   margin: ${({ theme }) => theme.spaces.xl} 0 0 0;
   padding: 0 0 0 ${({ theme }) => theme.spaces.l};
   text-transform: capitalize;

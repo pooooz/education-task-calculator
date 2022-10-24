@@ -1,26 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import { ThemeSwitcher } from 'containers/ThemeSwitcher/Class';
-import { Heading, SettingsContainer, ClearButton } from '../styled';
+import { ThemeSwitcher } from 'components/ThemeSwitcher/Class';
 
-class ClassSettings extends React.Component {
+import { setCalculationsHistory } from 'utils/localStorage';
+
+import { ClearButton, Heading, SettingsContainer } from '../styled';
+
+export class ClassSettings extends React.Component {
   render() {
-    const { setHistory } = this.props;
+    const clearHistory = () => {
+      setCalculationsHistory([]);
+    };
+
     return (
       <SettingsContainer>
         <Heading>Settings</Heading>
         <ThemeSwitcher />
-        <ClearButton type="button" onClick={() => setHistory([])}>
+        <ClearButton type="button" onClick={clearHistory}>
           Clear all history
         </ClearButton>
       </SettingsContainer>
     );
   }
 }
-
-ClassSettings.propTypes = {
-  setHistory: PropTypes.func.isRequired,
-};
-
-export { ClassSettings };

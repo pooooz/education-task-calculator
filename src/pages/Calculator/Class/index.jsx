@@ -1,15 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
+import { Display } from 'components/Display/Class';
+import { Keyboard } from 'components/Keyboard/Class';
+import { History } from 'components/History/Class';
 
 import Calc from 'utils/calculator';
-import { Display } from 'containers/Display/Class';
-import { Keyboard } from 'containers/Keyboard/Class';
-import { History } from 'containers/History/Class';
 import { handleParenthesisMode, handlePressHelper } from 'utils/helpers';
+import {
+  getCalculationsHistory,
+  setCalculationsHistory,
+} from 'utils/localStorage';
+
 import { CalculatorContainer, HomeContainer } from '../styled';
 import { expressionReducer } from '../reducer';
 
-class ClassCalculator extends React.Component {
+export class ClassCalculator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,11 +28,12 @@ class ClassCalculator extends React.Component {
   }
 
   render() {
+    const history = getCalculationsHistory();
+
     const changeHistory = (exp, res) => {
-      const { history, setHistory } = this.props;
       const newHistory = [...history];
       newHistory.unshift({ expression: exp, result: res });
-      setHistory(newHistory);
+      setCalculationsHistory(newHistory);
     };
 
     const setIsParenthesis = (value) => {
@@ -49,38 +55,28 @@ class ClassCalculator extends React.Component {
 
     const handlePress = (event) => {
       const { expression, isParenthesis, calculator } = this.state;
+
       if (event.target.tagName !== 'BUTTON') return;
       const buttonValue = event.target.textContent;
 
-      try {
-        if (isParenthesis) {
-          if (buttonValue === '+/-' || buttonValue === '=') return;
-          handleParenthesisMode(
-            buttonValue,
-            expression,
-            expressionDispatch,
-            setIsParenthesis,
-            changeHistory,
-            setCalculator,
-            calculator.getCurrentValue()
-          );
-          return;
-        }
-        handlePressHelper(
-          buttonValue,
-          expression,
-          expressionDispatch,
-          setIsParenthesis,
-          changeHistory,
-          setCalculator,
-          calculator.getCurrentValue()
-        );
-      } catch (error) {
-        console.error(error);
+      const helperArguments = [
+        buttonValue,
+        expression,
+        expressionDispatch,
+        setIsParenthesis,
+        changeHistory,
+        setCalculator,
+        calculator.getCurrentValue(),
+      ];
+
+      if (isParenthesis) {
+        if (buttonValue === '+/-' || buttonValue === '=') return;
+        handleParenthesisMode(...helperArguments);
+        return;
       }
+      handlePressHelper(...helperArguments);
     };
 
-    const { history } = this.props;
     const { expression } = this.state;
     return (
       <HomeContainer>
@@ -88,21 +84,8 @@ class ClassCalculator extends React.Component {
           <Display expression={expression} />
           <Keyboard handlePress={handlePress} />
         </CalculatorContainer>
-        <History history={history} />
+        <History />
       </HomeContainer>
     );
   }
 }
-
-ClassCalculator.propTypes = {
-  history: PropTypes.arrayOf(
-    PropTypes.shape({
-      expression: PropTypes.string.isRequired,
-      result: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-        .isRequired,
-    })
-  ).isRequired,
-  setHistory: PropTypes.func.isRequired,
-};
-
-export { ClassCalculator };

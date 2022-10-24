@@ -19,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "npx eslint ./src --ext .js,.jsx --fix",
+    "lint": "npx eslint ./src --ext .js,.jsx",
+    "lint:fix": "npx eslint ./src --ext .js,.jsx --fix",
     "predeploy": "yarn run build",
     "deploy:web": "yarn run build && gh-pages -d build"
   },

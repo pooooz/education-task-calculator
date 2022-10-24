@@ -1,21 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import { ThemeSwitcher } from 'containers/ThemeSwitcher/Functional';
-import { Heading, SettingsContainer, ClearButton } from '../styled';
+import { ThemeSwitcher } from 'components/ThemeSwitcher/Functional';
 
-const Settings = ({ setHistory }) => (
-  <SettingsContainer>
-    <Heading>Settings</Heading>
-    <ThemeSwitcher />
-    <ClearButton type="button" onClick={() => setHistory([])}>
-      Clear all history
-    </ClearButton>
-  </SettingsContainer>
-);
+import { setCalculationsHistory } from 'utils/localStorage';
 
-Settings.propTypes = {
-  setHistory: PropTypes.func.isRequired,
+import { ClearButton, Heading, SettingsContainer } from '../styled';
+
+export const Settings = () => {
+  const clearHistory = () => {
+    setCalculationsHistory([]);
+  };
+
+  return (
+    <SettingsContainer>
+      <Heading>Settings</Heading>
+      <ThemeSwitcher />
+      <ClearButton type="button" onClick={clearHistory}>
+        Clear all history
+      </ClearButton>
+    </SettingsContainer>
+  );
 };
-
-export { Settings };

@@ -1,22 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 
 import { StyledNavLink } from './styled';
 
-const NavItem = ({ to, children }) => (
-  <li>
-    <StyledNavLink
-      to={to}
-      className={(isActive) => (isActive ? 'active' : null)}
-    >
-      {children}
-    </StyledNavLink>
-  </li>
-);
+export const NavItem = ({ to, children }) => {
+  const { pathname } = useLocation();
+  return (
+    <li>
+      <StyledNavLink to={to} $isActive={pathname === to}>
+        {children}
+      </StyledNavLink>
+    </li>
+  );
+};
 
 NavItem.propTypes = {
   children: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
 };
-
-export { NavItem };
